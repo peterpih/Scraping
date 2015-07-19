@@ -1,0 +1,36 @@
+#Yahoo Scraping
+
+
+```{R}
+# load library
+install.packages("tseries")
+library(tseries)
+```
+
+```{R}
+useTicker = "3P7.F"
+startDate = Sys.Date()-1    # yesterday date
+endDate = Sys.Date()-1
+x = get.hist.quote(instrument=useTicker, start=startDate, end=endDate)
+```
+```{R}
+# can plot directly
+plot(x)
+```
+
+
+library(XML)
+library(stringr)
+library(ggplot2)
+url <- "http://www.boerse-frankfurt.de/en/parts/boxes/realtimequotes/realtimequotes.m?secu=isin.DE0008469008&COMPONENT_ID=tPREb25c71b63fa64ec1a4275e69e4f08522_DAX"
+x <- readHTMLTable(readLines(url), which = 1, header = TRUE, stringsAsFactors = FALSE, trim=TRUE)
+
+names(x) <- str_trim(names(x), side="both")
+names(x)gsub(" ", "", names(x))
+
+x
+
+
+url <- http://www.boerse-frankfurt.de/en/parts/boxes/realtimequotes/realtimequotes.m?secu=isin.DE0008469008&COMPONENT_ID=tPREb25c71b63fa64ec1a4275e69e4f08522_DAX
+
+a <- read.delim(url(http://www.boerse-frankfurt.de/en/parts/boxes/realtimequotes/realtimequotes.m?secu=isin.DE0008469008&COMPONENT_ID=tPREb25c71b63fa64ec1a4275e69e4f08522_DAX), header=TRUE, sep=" ")
